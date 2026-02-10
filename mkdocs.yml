@@ -1,0 +1,8 @@
+site_name: Backstage POC Platform Service
+nav:
+  - Overview: index.md
+  - Architecture: architecture.md
+  - ADR:
+      - 0001-adopt-backstage.md
+plugins:
+  - techdocs-core
