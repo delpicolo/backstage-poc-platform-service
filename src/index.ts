@@ -1,50 +1,55 @@
-// Sonar Bait File 😈
+// 🔥 HARD FAIL FILE 🔥
 
 console.log("Backstage POC Platform Service running");
 
-let globalValue: any = "123"; // uso de any
+// 1️⃣ Hardcoded secret
+const DB_PASSWORD = "super-secret-password";
 
-function processUser(user: any, flag: boolean) { // any + função muito complexa
-  let result = 0;
-  let unusedVariable = "I am not used"; // variável não usada
+// 2️⃣ SQL Injection pattern
+function getUserById(id: string) {
+  const query = "SELECT * FROM users WHERE id = '" + id + "'";
+  return query;
+}
 
-  if (user == null) { // comparação fraca
-    console.log("User is null");
-  } else {
-    if (flag) {
-      if (user.age > 18) {
-        if (user.age > 30) {
-          result = 100;
+// 3️⃣ eval usage (Security issue)
+function executeDynamicCode(code: string) {
+  return eval(code);
+}
+
+// 4️⃣ Extremely high cognitive complexity
+function complexLogic(a: number, b: number, c: number) {
+  if (a > 10) {
+    if (b > 20) {
+      if (c > 30) {
+        if (a + b > c) {
+          if (a % 2 === 0) {
+            if (b % 2 === 0) {
+              if (c % 2 === 0) {
+                return 1;
+              } else {
+                return 2;
+              }
+            } else {
+              return 3;
+            }
+          } else {
+            return 4;
+          }
         } else {
-          result = 50;
+          return 5;
         }
       } else {
-        result = 10;
+        return 6;
       }
     } else {
-      if (user.role == "admin") { // comparação fraca
-        result = 999;
-      } else {
-        result = 1;
-      }
+      return 7;
     }
   }
-
-  // nested ternary
-  const category =
-    result > 100 ? "high"
-      : result > 50 ? "medium"
-        : result > 10 ? "low"
-          : "none";
-
-  // possível undefined access
-  console.log(user.profile.name.toUpperCase());
-
-  return category;
+  return 0;
 }
 
-// código duplicado
-function calculateA(value: number) {
+// 5️⃣ Duplicate logic
+function duplicateA(value: number) {
   if (value > 10) {
     return value * 2;
   } else {
@@ -52,7 +57,7 @@ function calculateA(value: number) {
   }
 }
 
-function calculateB(value: number) {
+function duplicateB(value: number) {
   if (value > 10) {
     return value * 2;
   } else {
@@ -60,18 +65,27 @@ function calculateB(value: number) {
   }
 }
 
-// promise não tratada
-async function fetchData() {
-  fetch("https://example.com/api/data"); // sem await / sem catch
-}
-
-// magic number + shadowing
-function computeScore(score: number) {
-  if (score > 42) { // magic number
-    let score = 100; // shadowing
-    return score;
+// 6️⃣ Empty catch block
+async function unsafeAsync() {
+  try {
+    await fetch("https://example.com");
+  } catch (e) {
+    // silently ignored
   }
-  return score;
 }
 
-processUser({ age: 35, role: "admin" }, true);
+// 7️⃣ Unsafe regex (catastrophic backtracking risk)
+const unsafeRegex = /(a+)+$/;
+unsafeRegex.test("aaaaaaaaaaaaaaaaaaaaaaaaaaaaX");
+
+// 8️⃣ Non-null assertion abuse
+function printName(user?: { name?: string }) {
+  console.log(user!.name!.toUpperCase());
+}
+
+// 9️⃣ Unhandled Promise
+function fireAndForget() {
+  fetch("https://example.com");
+}
+
+fireAndForget();
