@@ -6,7 +6,7 @@ metadata:
   annotations:
     github.com/project-slug: delpicolo/backstage-poc-platform-service
     backstage.io/techdocs-ref: dir:.
-    npm/package-name: react
+    npm/package: react
 spec:
   type: service
   lifecycle: production
