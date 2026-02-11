@@ -23,6 +23,6 @@ metadata:
 spec:
   type: openapi
   lifecycle: production
-  owner: team-platform
+  owner: platform-team
   definition:
     $text: ./api/openapi.yaml
